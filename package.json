@@ -12,7 +12,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.66.7",
+    "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "commitizen": "^4.3.1",
     "cz-customizable": "^7.4.0",
