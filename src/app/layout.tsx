@@ -1,5 +1,5 @@
 import './globals.css';
-import { MswComponent } from '@/components/util/msw-component';
+import MSWComponent from '@/components/util/msw-component';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,8 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MswComponent />
-        {children}
+        <MSWComponent>{children}</MSWComponent>
       </body>
     </html>
   );

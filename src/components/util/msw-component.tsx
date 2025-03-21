@@ -1,23 +1,27 @@
 'use client';
 
-import { useEffect } from 'react';
+import { type PropsWithChildren, useEffect, useState } from 'react';
 
-export const MswComponent = () => {
+export default function MSWComponent({ children }: PropsWithChildren) {
+  const [init, setInit] = useState(process.env.NODE_ENV !== 'development');
+
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      if (typeof window === 'undefined') {
-        (async () => {
-          const { server } = await import('@/mocks/server.mock');
-          server.listen();
-        })();
-      } else {
-        (async () => {
-          const { worker } = await import('@/mocks/browser.mock');
-          worker.start();
-        })();
+    async function enableMocking() {
+      if (typeof window !== 'undefined') {
+        const { worker } = await import('@/mocks/browser.mock');
+
+        await worker.start();
+        setInit(true);
       }
     }
-  });
+    if (!init) {
+      enableMocking();
+    }
+  }, [init]);
 
-  return null;
-};
+  if (!init) {
+    return null;
+  }
+
+  return <>{children}</>;
+}
