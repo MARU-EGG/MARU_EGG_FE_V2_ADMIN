@@ -2,14 +2,6 @@ import { API_PATH } from '@/stores/querys/api-path';
 import { HttpResponse, http } from 'msw';
 
 export const handler = [
-  http.get('http://www.test.com/test', () => {
-    console.log('here');
-    return HttpResponse.json({
-      success: true,
-      message: '성공',
-    });
-  }),
-
   http.get(`${API_PATH.schedules}`, () => {
     console.log('msw 테스트값');
     return HttpResponse.json({
