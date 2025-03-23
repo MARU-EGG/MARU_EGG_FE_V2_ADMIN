@@ -1,6 +1,6 @@
 'use client';
 
-import { handler } from '@/mocks/handler.mock';
+import { handler } from '@/mocks/handlers/index.mock';
 import { Suspense, use } from 'react';
 
 const mockingEnabledPromise =
