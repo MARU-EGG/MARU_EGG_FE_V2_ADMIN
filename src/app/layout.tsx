@@ -1,5 +1,6 @@
 import './globals.css';
-import { MSWProvider } from '@/components/util/msw-provider';
+import { MSWProvider } from '@/components/providers/msw-provider';
+import QueryProvider from '@/components/providers/query-provider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MSWProvider>{children}</MSWProvider>
+        <MSWProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </MSWProvider>
       </body>
     </html>
   );
