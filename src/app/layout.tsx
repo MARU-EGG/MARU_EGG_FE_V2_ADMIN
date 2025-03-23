@@ -1,6 +1,6 @@
 import './globals.css';
+import { MSWProvider } from '@/components/providers/msw-provider';
 import QueryProvider from '@/components/providers/query-provider';
-import { MSWProvider } from '@/components/util/msw-provider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
