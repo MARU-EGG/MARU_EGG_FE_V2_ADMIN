@@ -11,7 +11,7 @@ type MiniCalendarProps = {
 };
 
 function MiniCalendar({ handleCloseCalendar, value, onDateClick }: MiniCalendarProps) {
-  const { groupWeek, dateInfo, dispatch } = useCalendar();
+  const { groupWeek, dateInfo, dispatch } = useCalendar(value?.date);
 
   const handleDayClick = (day: CalendarDay) => {
     onDateClick(day);
@@ -26,7 +26,7 @@ function MiniCalendar({ handleCloseCalendar, value, onDateClick }: MiniCalendarP
         handleNextMonth={dispatch.handleNextMonth}
       />
       <table className="w-full">
-        <CalendarWeeks></CalendarWeeks>
+        <CalendarWeeks />
         <tbody>
           {groupWeek.map((week, index) => (
             <tr className="text-center text-grayscale-gray-50" key={index}>
