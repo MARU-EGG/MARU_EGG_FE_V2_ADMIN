@@ -20,11 +20,11 @@ export const SmallType: Story = {
   },
   render: () => (
     <Selector>
-      <Selector.Trigger>전형선택</Selector.Trigger>
+      <Selector.Trigger placeholder="타입선택" />
       <Selector.Menus>
-        <Selector.Menu onClick={action('수시 clicked')}>수시</Selector.Menu>
-        <Selector.Menu onClick={action('정시clicked')}>정시</Selector.Menu>
-        <Selector.Menu onClick={action('편입 clicked')}>편입</Selector.Menu>
+        <Selector.Menu value="SUSI" label="수시" onClick={action('수시 clicked')} />
+        <Selector.Menu value="JEONGSI" label="정시" onClick={action('정시clicked')} />
+        <Selector.Menu value="PYEONIP" label="편입" onClick={action('편입 clicked')} />
       </Selector.Menus>
     </Selector>
   ),
@@ -37,11 +37,11 @@ export const LargeType: Story = {
   },
   render: () => (
     <Selector>
-      <Selector.Trigger>전형선택</Selector.Trigger>
+      <Selector.Trigger placeholder="타입선택" />
       <Selector.Menus>
-        <Selector.Menu onClick={action('수시 clicked')}>수시</Selector.Menu>
-        <Selector.Menu onClick={action('정시clicked')}>정시</Selector.Menu>
-        <Selector.Menu onClick={action('편입 clicked')}>편입</Selector.Menu>
+        <Selector.Menu value="SUSI" label="수시" onClick={action('수시 clicked')} />
+        <Selector.Menu value="JEONGSI" label="정시" onClick={action('정시clicked')} />
+        <Selector.Menu value="PYEONIP" label="편입" onClick={action('편입 clicked')} />
       </Selector.Menus>
     </Selector>
   ),
@@ -54,12 +54,12 @@ export const SmallCategory: Story = {
   },
   render: () => (
     <Selector>
-      <Selector.Trigger>카테고리 선택</Selector.Trigger>
+      <Selector.Trigger placeholder="카테고리선택" />
       <Selector.Menus>
-        <Selector.Menu onClick={action('모집요강')}>모집요강</Selector.Menu>
-        <Selector.Menu onClick={action('입시결과')}>입시결과</Selector.Menu>
-        <Selector.Menu onClick={action('기출문제')}>기출문제</Selector.Menu>
-        <Selector.Menu onClick={action('면접유의사항')}>면접유의사항</Selector.Menu>
+        <Selector.Menu value="ADMISSION_GUIDE" label="모집요강" onClick={action('모집요강')} />
+        <Selector.Menu value="PASSING_RESULT" label="입시결과" onClick={action('입시결과')} />
+        <Selector.Menu value="PAST_QUESTION" label="기출문제" onClick={action('기출문제')} />
+        <Selector.Menu value="INTERVIEW_INFO" label="면접유의사항" onClick={action('면접유의사항')} />
       </Selector.Menus>
     </Selector>
   ),
@@ -72,12 +72,12 @@ export const LargeCategory: Story = {
   },
   render: () => (
     <Selector>
-      <Selector.Trigger>카테고리 선택</Selector.Trigger>
+      <Selector.Trigger placeholder="카테고리선택" />
       <Selector.Menus>
-        <Selector.Menu onClick={action('모집요강')}>모집요강</Selector.Menu>
-        <Selector.Menu onClick={action('입시결과')}>입시결과</Selector.Menu>
-        <Selector.Menu onClick={action('기출문제')}>기출문제</Selector.Menu>
-        <Selector.Menu onClick={action('면접유의사항')}>면접유의사항</Selector.Menu>
+        <Selector.Menu value="ADMISSION_GUIDE" label="모집요강" onClick={action('모집요강')} />
+        <Selector.Menu value="PASSING_RESULT" label="입시결과" onClick={action('입시결과')} />
+        <Selector.Menu value="PAST_QUESTION" label="기출문제" onClick={action('기출문제')} />
+        <Selector.Menu value="INTERVIEW_INFO" label="면접유의사항" onClick={action('면접유의사항')} />
       </Selector.Menus>
     </Selector>
   ),
