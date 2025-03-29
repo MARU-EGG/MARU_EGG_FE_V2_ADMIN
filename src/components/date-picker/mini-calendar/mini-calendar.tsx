@@ -19,7 +19,7 @@ function MiniCalendar({ handleCloseCalendar, value, onDateClick }: MiniCalendarP
   };
 
   return (
-    <div className="absolute top-12 h-64 w-60 rounded-md border border-grayscale-gray-20 bg-white px-1 py-1 shadow-md">
+    <div className="absolute top-12 w-60 rounded-md border border-grayscale-gray-20 bg-white px-1 py-1 shadow-md">
       <MiniCalendarHeader
         dateInfo={dateInfo}
         handlePrevMonth={dispatch.handlePrevMonth}
