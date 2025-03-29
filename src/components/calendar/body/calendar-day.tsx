@@ -1,4 +1,3 @@
-import CalendarEvent from '@/components/calendar/body/calendar-events';
 import { useCalendarContext } from '@/components/calendar/context/calendar-context';
 import { CalendarDay as CalendarDayType, DateInfo } from '@/types/calendar';
 import { cn } from '@/utils/style';
@@ -8,7 +7,7 @@ type DayProps = {
 };
 
 function CalendarDay({ day }: DayProps) {
-  const { restDays, dateInfo, selectedDay, dispatch, todayDate, onDateClick } = useCalendarContext();
+  const { restDays, dateInfo, selectedDay, todayDate } = useCalendarContext();
   const isCurrentMonth = day.month === dateInfo.month;
   const isRestDay = day.dayOfWeek === 0 || restDays[day.date];
   const isSaturday = day.dayOfWeek === 6;
@@ -40,17 +39,7 @@ function CalendarDay({ day }: DayProps) {
     },
   );
 
-  const handleDateClick = () => {
-    dispatch.handleSelectedDay(day.date);
-    if (onDateClick) {
-      onDateClick(day);
-    }
-  };
-  return (
-    <span onClick={handleDateClick} className={style}>
-      {day.day}
-    </span>
-  );
+  return <span className={style}>{day.day}</span>;
 }
 
 export default CalendarDay;
