@@ -3,17 +3,19 @@
 import { useSelectorContext } from './selector-context';
 
 type menuProps = {
-  children: string;
-  onClick?: (event?: React.MouseEvent<HTMLDivElement>) => void;
+  children: React.ReactNode;
+  value: string;
+  label: string;
+  onClick?: (value: string, label: string) => void;
 };
 
-function Menu({ children, onClick }: menuProps) {
+function Menu({ children, onClick, value, label }: menuProps) {
   const { setIsOpen, setTriggerLabel } = useSelectorContext();
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    setTriggerLabel(children);
+  const handleClick = () => {
+    setTriggerLabel(label);
     setIsOpen(false);
-    onClick && onClick(event);
+    onClick && onClick(value, label);
   };
 
   return (
