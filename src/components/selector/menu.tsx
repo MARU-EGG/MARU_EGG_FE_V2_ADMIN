@@ -3,7 +3,7 @@
 import { useSelectorContext } from './selector-context';
 
 type menuProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   value: string;
   label: string;
   onClick?: (value: string, label: string) => void;
@@ -23,7 +23,8 @@ function Menu({ children, onClick, value, label }: menuProps) {
       onClick={handleClick}
       className="cursor-default rounded-md px-3 py-3 text-sm font-semibold leading-tight text-grayscale-gray-70 hover:bg-monotone-black hover:bg-opacity-[0.08]"
     >
-      {children}
+      {label}
+      {children && <>{children}</>}
     </div>
   );
 }
