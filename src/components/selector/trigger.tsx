@@ -4,20 +4,14 @@ import { useSelectorContext } from '@/components/selector/selector-context';
 import { cn } from '@/utils/style';
 import cheveronBottomIcon from '@public/svg/chevron-bottom.svg';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 type TriggerProps = {
-  children: string;
+  placeholder: string;
 };
 
-function Trigger({ children }: TriggerProps) {
-  const { isOpen, setIsOpen, triggerLabel, setTriggerLabel, size } = useSelectorContext();
-
-  useEffect(() => {
-    if (!triggerLabel && children) {
-      setTriggerLabel(children);
-    }
-  });
+function Trigger({ placeholder }: TriggerProps) {
+  const { setIsOpen, triggerLabel, size } = useSelectorContext();
 
   const triggerStyle = cn(
     'rounded-lg bg-monotone-white px-4 py-3 drop-shadow-[0_0_1px_rgba(37,37,40,0.32)]',
@@ -26,9 +20,11 @@ function Trigger({ children }: TriggerProps) {
 
   return (
     <div className={triggerStyle}>
-      <div className="flex justify-between">
-        <p className="font-semibold leading-tight text-grayscale-gray-70">{triggerLabel || children}</p>
-        <button onClick={() => setIsOpen(!isOpen)} className="ml-2 cursor-pointer">
+      <div className="flex justify-between" onClick={() => setIsOpen((prev) => !prev)}>
+        <p className="cursor-default font-semibold leading-tight text-grayscale-gray-70">
+          {triggerLabel || placeholder}
+        </p>
+        <button className="ml-2 cursor-pointer">
           <Image src={cheveronBottomIcon} alt="셀렉트 열기" />
         </button>
       </div>
