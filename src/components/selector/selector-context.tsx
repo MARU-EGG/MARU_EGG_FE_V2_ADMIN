@@ -15,7 +15,7 @@ export const SelectorContext = createContext<SelectorContextType | undefined>(un
 export function useSelectorContext() {
   const context = useContext(SelectorContext);
   if (!context) {
-    throw new Error('useSelectorContext must be used within a FlyOutProvider');
+    throw new Error('useSelectorContext must be used within a SelectorProvider');
   }
   return context;
 }
