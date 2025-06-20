@@ -34,6 +34,7 @@ export default {
           sunday: '#FE4A4A',
         },
         error: '#F60000',
+        success: '#00B93E',
       },
       fontFamily: {
         sans: ['Pretendard', 'sans-serif'],

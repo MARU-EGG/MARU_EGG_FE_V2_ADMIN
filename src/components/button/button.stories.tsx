@@ -1,6 +1,5 @@
 import Button from '@/components/button/button';
 import { Meta, StoryObj } from '@storybook/react';
-import { describe } from 'node:test';
 
 const meta = {
   title: 'Components/Button',
