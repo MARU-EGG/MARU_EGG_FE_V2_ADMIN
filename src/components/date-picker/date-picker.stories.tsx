@@ -1,7 +1,7 @@
 import DatePicker from '@/components/date-picker/date-picker';
 import { action } from '@storybook/addon-actions';
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 
 const meta = {
   title: 'Components/Date-Picker',
@@ -14,7 +14,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DatePickerWithState = (args: any) => {
+const DatePickerWithState = (args: ComponentProps<typeof DatePicker>) => {
   const [date, setDate] = useState(args.value);
 
   return (

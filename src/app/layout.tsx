@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 };
 
 if (process.env.NEXT_RUNTIME === 'nodejs' && process.env.NODE_ENV !== 'production') {
-  const { server } = require('@/mocks/server.mock');
-  server.listen();
+  import('@/mocks/server.mock').then(({ server }) => {
+    server.listen();
+  });
 }
 
 export default function RootLayout({

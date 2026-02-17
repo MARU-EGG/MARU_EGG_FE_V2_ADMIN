@@ -77,7 +77,7 @@ export const schedulesHandler = [
         const event = dayInfo.events.find((ev) => ev.id === eventId);
         if (event) {
           foundEvent = event;
-          const zeroPad = (num: Number) => String(num).padStart(2, '0');
+          const zeroPad = (num: number) => String(num).padStart(2, '0');
           foundEventDate = `${schedule.year}${zeroPad(schedule.month)}${zeroPad(dayInfo.day)}`;
           break;
         }

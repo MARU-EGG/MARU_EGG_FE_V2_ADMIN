@@ -1,7 +1,7 @@
 import { CalendarDay } from '@/types/calendar';
 
 export function groupByWeek(formatCurrentMonthDays: CalendarDay[]) {
-  let weeks: CalendarDay[][] = [];
+  const weeks: CalendarDay[][] = [];
   let currentWeek: CalendarDay[] = [];
 
   formatCurrentMonthDays.forEach((day) => {

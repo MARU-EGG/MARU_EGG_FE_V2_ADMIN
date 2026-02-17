@@ -17,7 +17,7 @@ const mockingEnabledPromise =
         worker.use(...handler);
         if (typeof module !== 'undefined') {
           // HMR이슈 해결 코드(next.js 이슈 69098)
-          (module as any).hot?.dispose(() => {
+          (module as { hot?: { dispose: (fn: () => void) => void } }).hot?.dispose(() => {
             worker.stop();
           });
         }
