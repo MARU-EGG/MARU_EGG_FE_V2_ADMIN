@@ -1,6 +1,8 @@
 import './globals.css';
+import Button from '@/components/button/button';
 import { MSWProvider } from '@/components/providers/msw-provider';
 import QueryProvider from '@/components/providers/query-provider';
+import Sidebar from '@/components/sidebar';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,7 +25,19 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <MSWProvider>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <div className="flex h-screen">
+              <Sidebar />
+              <main className="flex flex-1 flex-col gap-6 overflow-auto px-10 py-3">
+                <section className="flex justify-end py-3">
+                  <Button variant="secondary" size="large">
+                    로그아웃
+                  </Button>
+                </section>
+                {children}
+              </main>
+            </div>
+          </QueryProvider>
         </MSWProvider>
       </body>
     </html>
