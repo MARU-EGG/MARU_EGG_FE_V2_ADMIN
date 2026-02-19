@@ -1,12 +1,13 @@
 import SidebarButton from './sidebar-button';
+import Link from 'next/link';
 
 function Sidebar() {
   return (
     <div className="h-screen min-w-[168px] max-w-[280px] bg-primary-egg py-6">
       <div className="flex flex-col gap-8">
-        <h1 className="px-4 text-2xl font-semibold text-primary-maru">
+        <Link href={'/home'} className="px-4 text-2xl font-semibold text-primary-maru">
           MARU-EGG <br /> ADMIN
-        </h1>
+        </Link>
         <div className="flex flex-col">
           <SidebarButton name="홈" href="/home" />
           <SidebarButton name="질문 목록" href="/question-list" />
