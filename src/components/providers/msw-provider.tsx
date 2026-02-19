@@ -6,9 +6,6 @@ import { Suspense, use } from 'react';
 const mockingEnabledPromise =
   typeof window !== 'undefined'
     ? import('@/mocks/browser.mock').then(async ({ worker }) => {
-        if (process.env.NODE_ENV === 'development') {
-          await worker.start();
-        }
         await worker.start({
           onUnhandledRequest(request, print) {
             if (request.url.includes('_next')) {
@@ -18,10 +15,12 @@ const mockingEnabledPromise =
           },
         });
         worker.use(...handler);
-        (module as any).hot?.dispose(() => {
+        if (typeof module !== 'undefined') {
           // HMR이슈 해결 코드(next.js 이슈 69098)
-          worker.stop();
-        });
+          (module as { hot?: { dispose: (fn: () => void) => void } }).hot?.dispose(() => {
+            worker.stop();
+          });
+        }
       })
     : Promise.resolve();
 
