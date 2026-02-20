@@ -58,9 +58,9 @@ pnpm storybook  # Start Storybook
   - `vercel-composition-patterns`: Component composition patterns for reusability and scalability
   - `web-design-guidelines`: Project design system and UI guidelines
 - Always ask for a clear explanation before starting complex tasks or architectural changes
-- After completing a task with significant changes, append a summary of those changes
-  to the relevant directory's CLAUDE.md
+- After completing a task with significant changes, append a summary of those changes to the relevant directory's CLAUDE.md
 
 ## Known Gotchas
 
 - Next.js 15 + React 19: be explicit about `"use client"` / `"use server"` directives
+- Do not use `querys` as a folder name — the correct folder name is `queries`
