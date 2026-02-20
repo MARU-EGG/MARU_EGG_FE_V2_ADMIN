@@ -2,6 +2,7 @@ import './globals.css';
 import Button from '@/components/button/button';
 import QueryProvider from '@/components/providers/query-provider';
 import Sidebar from '@/components/sidebar';
+import { ToastProvider } from '@/components/toast';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <QueryProvider>
+          <ToastProvider />
           <div className="flex h-screen">
             <Sidebar />
             <main className="flex flex-1 flex-col gap-6 overflow-auto px-10 py-3">
