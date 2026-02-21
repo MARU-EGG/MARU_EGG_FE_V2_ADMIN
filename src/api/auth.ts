@@ -5,7 +5,10 @@ export async function signIn({ email, password }: { email: string; password: str
     email,
     password,
   });
-  return response.data;
+  return {
+    accessToken: response.headers['authorization'] as string,
+    refreshToken: response.headers['authorization-refresh'] as string,
+  };
 }
 
 export async function signUp({ email, password }: { email: string; password: string }) {
