@@ -1,4 +1,4 @@
-import { signIn } from '@/api/auth';
+import { signIn } from '@/api/swagger/auth';
 import { useMutation } from '@tanstack/react-query';
 
 export function useLoginMutation() {
