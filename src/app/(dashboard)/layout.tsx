@@ -7,8 +7,10 @@ import { useRouter } from 'next/navigation';
 
 export default function DashboardLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   const router = useRouter();
 
@@ -28,6 +30,7 @@ export default function DashboardLayout({
         </section>
         {children}
       </main>
+      {modal}
     </div>
   );
 }

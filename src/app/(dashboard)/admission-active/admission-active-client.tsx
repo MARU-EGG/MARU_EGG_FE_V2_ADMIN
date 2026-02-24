@@ -7,9 +7,11 @@ import useDocumentsQuery from '@/app/(dashboard)/admission-active/hooks/use-docu
 import Button from '@/components/button/button';
 import Selector from '@/components/selector';
 import { groupDocumentsByTitle } from '@/utils/groupDocumentsByTitle';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 function AdmissionActiveClient() {
+  const router = useRouter();
   const [selectedAdmissionType, setSelectedAdmissionType] = useState<AdmissionType>('SUSI');
 
   const { data } = useDocumentsQuery({
@@ -39,7 +41,7 @@ function AdmissionActiveClient() {
           </Selector>
           <AdmissionActiveSwitch selectedAdmissionType={selectedAdmissionType} />
           <div className="ml-auto">
-            <Button variant="primary" size="large">
+            <Button variant="primary" size="large" onClick={() => router.push('/admission-active/upload')}>
               파일 업로드
             </Button>
           </div>
