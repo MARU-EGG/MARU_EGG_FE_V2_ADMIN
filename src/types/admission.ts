@@ -1,4 +1,4 @@
-export const ADMISSIONS = { SUSI: '수시', JEONGSI: '정시', PYEONIP: '편입' } as const;
+export const ADMISSIONS = { SUSI: '수시', JEONGSI: '정시', PYEONIP: '편입학' } as const;
 
 export type AdmissionType = keyof typeof ADMISSIONS;
 export type AdmissionLabel = (typeof ADMISSIONS)[AdmissionType];
