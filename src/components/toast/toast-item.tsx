@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { ToastItemData } from './classes/toast-item';
 import { toastStore } from './classes/toast-store';
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
+import { useEffect, useRef, useState } from 'react';
 
 type ToastItemProps = {
   item: ToastItemData;

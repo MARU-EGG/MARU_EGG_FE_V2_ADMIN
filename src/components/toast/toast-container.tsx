@@ -3,7 +3,7 @@
 import { ToastPosition } from './classes/toast-item';
 import { useToast } from './hooks/use-toast';
 import ToastItem from './toast-item';
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 
 const positionStyles: Record<ToastPosition, string> = {
   'top-left': 'fixed top-4 left-4',

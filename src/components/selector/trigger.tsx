@@ -1,7 +1,7 @@
 'use client';
 
 import { useSelectorContext } from '@/components/selector/selector-context';
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 import cheveronBottomIcon from '@public/svg/chevron-bottom.svg';
 import Image from 'next/image';
 import React from 'react';
@@ -24,7 +24,7 @@ function Trigger({ placeholder }: TriggerProps) {
         <p className="cursor-default font-semibold leading-tight text-grayscale-gray-70">
           {triggerLabel || placeholder}
         </p>
-        <button className="ml-2 cursor-pointer">
+        <button type="button" className="ml-2 cursor-pointer">
           <Image src={cheveronBottomIcon} alt="셀렉트 열기" />
         </button>
       </div>
