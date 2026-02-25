@@ -1,6 +1,6 @@
 import { useCalendarContext } from '@/components/calendar/context/calendar-context';
+import { cn } from '@/lib/utils';
 import { CalendarDay as CalendarDayType, DateInfo } from '@/types/calendar';
-import { cn } from '@/utils/style';
 
 type DayProps = {
   day: CalendarDayType;
