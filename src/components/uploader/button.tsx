@@ -6,7 +6,7 @@ import Image from 'next/image';
 import React from 'react';
 
 function Button() {
-  const { setListOpen, setFileList, fileList } = useUploaderContext();
+  const { setListOpen, setFileList, fileList, mode } = useUploaderContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFile = Array.from(e.target.files ?? []);
@@ -22,7 +22,14 @@ function Button() {
           파일 업로드를 위해 클릭해주세요
         </div>
       </label>
-      <input onChange={handleChange} id="file" className="invisible" type="file" multiple />
+      <input
+        onChange={handleChange}
+        id="file"
+        className="invisible"
+        type="file"
+        multiple={mode === 'multiple'}
+        accept=".pdf"
+      />
     </>
   );
 }

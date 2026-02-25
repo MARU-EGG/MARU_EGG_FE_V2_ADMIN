@@ -1,4 +1,4 @@
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 
 function CalendarWeeks() {
   const WEEKS = ['일', '월', '화', '수', '목', '금', '토'] as const;

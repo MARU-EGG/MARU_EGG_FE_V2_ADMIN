@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 import React, { useState } from 'react';
 
 type TextAreaProps = {

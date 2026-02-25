@@ -10,7 +10,8 @@ type menuProps = {
 };
 
 function Menu({ children, onClick, value, label }: menuProps) {
-  const { setIsOpen, setTriggerLabel } = useSelectorContext();
+  const { setIsOpen, setTriggerLabel, triggerLabel } = useSelectorContext();
+  const isSelected = triggerLabel === label;
 
   const handleClick = () => {
     setTriggerLabel(label);
@@ -21,7 +22,7 @@ function Menu({ children, onClick, value, label }: menuProps) {
   return (
     <div
       onClick={handleClick}
-      className="cursor-default rounded-md px-3 py-3 text-sm font-semibold leading-tight text-grayscale-gray-70 hover:bg-monotone-black hover:bg-opacity-[0.08]"
+      className={`cursor-default rounded-md px-3 py-3 text-sm font-semibold leading-tight text-grayscale-gray-70 hover:bg-monotone-black hover:bg-opacity-[0.08] ${isSelected ? 'bg-monotone-black bg-opacity-[0.08]' : ''}`}
     >
       {label}
       {children && <>{children}</>}

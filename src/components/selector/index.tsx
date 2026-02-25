@@ -1,23 +1,41 @@
 'use client';
 
-import Menu from './menu';
-import Menus from './menus';
-import { SelectorContext } from './selector-context';
+import Menu from '@/components/selector/menu';
+import Menus from '@/components/selector/menus';
+import { SelectorContext } from '@/components/selector/selector-context';
 import Trigger from '@/components/selector/trigger';
 import { useState } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 type SelectorProps = {
+  value?: string;
   children: React.ReactNode;
   selectorSize?: 'small' | 'large';
 };
 
-function Selector({ children, selectorSize = 'small' }: SelectorProps) {
+function Selector({ value, children, selectorSize = 'small' }: SelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [triggerLabel, setTriggerLabel] = useState('');
+  const [triggerLabel, setTriggerLabel] = useState(value ?? '');
   const size = selectorSize;
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <SelectorContext.Provider value={{ isOpen, setIsOpen, triggerLabel, setTriggerLabel, size }}>
-      <div className="flex flex-col">{children}</div>
+      <div ref={ref} className="flex flex-col">
+        {children}
+      </div>
     </SelectorContext.Provider>
   );
 }

@@ -1,6 +1,6 @@
 import { useCalendar } from '@/hooks/calendar/use-calendar-hook';
+import { cn } from '@/lib/utils';
 import { CalendarDay, DateInfo } from '@/types/calendar';
-import { cn } from '@/utils/style';
 import { isSameDay } from 'date-fns';
 
 type MiniCalendarDayProps = {

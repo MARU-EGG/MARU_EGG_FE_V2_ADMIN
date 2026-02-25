@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 
 type ChipProps = {
   label: string;

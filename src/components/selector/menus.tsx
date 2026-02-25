@@ -1,7 +1,7 @@
 'use client';
 
 import { useSelectorContext } from '@/components/selector/selector-context';
-import { cn } from '@/utils/style';
+import { cn } from '@/lib/utils';
 
 type menusProps = {
   children: React.ReactNode;
