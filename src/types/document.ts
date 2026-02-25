@@ -12,3 +12,10 @@ export type Document = {
 export type DocumentResponse = {
   documents: Record<AdmissionLabel, Document[]>;
 };
+
+export type UploadDocumentParams = {
+  type: AdmissionLabel;
+  category: AdmissionCategoryLabel;
+  pdf_file: File;
+  page_gap: number;
+};
