@@ -19,7 +19,7 @@ export async function uploadDocument({ type, category, pdf_file, page_gap }: Upl
   formdata.append('type', type);
   formdata.append('category', category);
   formdata.append('pdf_file', pdf_file);
-  formdata.append('page_gap', '3');
+  formdata.append('page_gap', page_gap.toString());
 
   const response = await llm_server_api_axiosInstance.post('/upload_pdf/', formdata, {
     headers: {

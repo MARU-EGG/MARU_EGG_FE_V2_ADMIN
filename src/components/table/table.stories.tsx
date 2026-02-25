@@ -1,6 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/table/index';
 import { Meta, StoryObj } from '@storybook/react';
-import { ReactNode } from 'react';
 
 const meta = {
   title: 'Components/Table',

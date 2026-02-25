@@ -1,12 +1,11 @@
 import AdmissioDocumentDeleteDialog from '@/app/(dashboard)/admission-active/admission-document-delete-dialog';
 import { AdmissionLabel } from '@/types/admission';
 import { Document } from '@/types/document';
-import { Download, FileText, Trash2 } from 'lucide-react';
+import { Download, FileText } from 'lucide-react';
 
 function AdmissionDocumentItem({ document, type }: { document: Document; type: AdmissionLabel }) {
   const DOCUMENT_URL = `${process.env.NEXT_PUBLIC_DOCUMENTS_BASE_URL}${document.title}`;
   const { title, category, created_at } = document;
-  console.log(document);
 
   return (
     <div className="flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors hover:bg-gray-50">

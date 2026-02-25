@@ -1,6 +1,6 @@
 import { getRestDays } from '@/api/calendar';
 import { formatRestDays } from '@/utils/calendar/format-rest-days';
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 function useRestDayQuery(year: string) {
   const { data } = useSuspenseQuery({

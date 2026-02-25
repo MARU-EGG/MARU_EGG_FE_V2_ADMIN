@@ -44,7 +44,6 @@ function AdmissioDocumentDeleteDialog({ title, type, category }: AdmissionDocume
         />
       </AlertDialogTrigger>
       <AlertDialogContent className="max-w-sm overflow-hidden rounded-xl p-0" onClick={(e) => e.stopPropagation()}>
-        {/* 상단 아이콘 영역 */}
         <div className="flex flex-col items-center gap-3 bg-red-50 px-6 pb-6 pt-8">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
             <Trash2 size={22} className="text-red-500" />
