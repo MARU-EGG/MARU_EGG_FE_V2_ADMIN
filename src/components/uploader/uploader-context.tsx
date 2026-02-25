@@ -7,6 +7,7 @@ type UploaderContextType = {
   setListOpen: React.Dispatch<React.SetStateAction<boolean>>;
   fileList: File[];
   setFileList: React.Dispatch<React.SetStateAction<File[]>>;
+  mode: 'single' | 'multiple';
 };
 
 export const UploaderContext = createContext<UploaderContextType | undefined>(undefined);
