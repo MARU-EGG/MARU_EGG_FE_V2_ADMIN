@@ -13,7 +13,7 @@ export default async function AdmissionActive() {
       queryFn: getAdmissionsStatus,
     }),
     queryClient.prefetchQuery({
-      queryKey: ['documents', '수시'],
+      queryKey: ['documents', '수시', undefined],
       queryFn: () => getDocuments({ type: '수시' }),
     }),
   ]);
