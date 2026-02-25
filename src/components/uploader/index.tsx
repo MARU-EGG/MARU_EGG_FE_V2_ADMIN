@@ -6,7 +6,7 @@ import { UploaderContext } from './uploader-context';
 import { useEffect, useState } from 'react';
 
 type UploaderProps = {
-  mode: 'single' | 'multiple';
+  mode?: 'single' | 'multiple';
   children: React.ReactNode;
   onFileChange?: (files: File[]) => void;
 };
