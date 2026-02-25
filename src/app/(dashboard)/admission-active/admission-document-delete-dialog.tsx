@@ -53,7 +53,8 @@ function AdmissioDocumentDeleteDialog({ title, type, category }: AdmissionDocume
               파일을 삭제하시겠어요?
             </AlertDialogTitle>
             <AlertDialogDescription className="text-sm leading-relaxed text-gray-500">
-              <span className="font-medium text-gray-700">"{title}"</span> 파일이 영구적으로 삭제됩니다. <br />
+              <span className="font-medium text-gray-700">&quot;{title}&quot;</span> 파일이 영구적으로 삭제됩니다.{' '}
+              <br />
               삭제된 파일은 복구할 수 없습니다.
             </AlertDialogDescription>
           </AlertDialogHeader>
