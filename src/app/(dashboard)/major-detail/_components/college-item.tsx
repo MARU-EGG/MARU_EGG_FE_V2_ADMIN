@@ -1,8 +1,8 @@
 'use client';
 
+import { useDeleteCollegeMutation } from '../hooks/use-college-mutations';
 import CollegeFormDialog from './college-form-dialog';
 import DeleteConfirmDialog from './delete-confirm-dialog';
-import { useDeleteCollegeMutation } from '../hooks/use-college-mutations';
 import { cn } from '@/lib/utils';
 import { Pencil, Trash2 } from 'lucide-react';
 
@@ -20,7 +20,7 @@ function CollegeItem({ college, isSelected, onSelect }: CollegeItemProps) {
       onClick={onSelect}
       className={cn(
         'flex cursor-pointer items-center justify-between px-4 py-3 transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-gray-50',
-        isSelected && 'bg-primary-egg/40 hover:bg-primary-egg/50',
+        isSelected && 'bg-primary-egg hover:bg-primary-egg/50',
       )}
     >
       <span className="text-sm font-medium text-gray-800">{college.name}</span>
