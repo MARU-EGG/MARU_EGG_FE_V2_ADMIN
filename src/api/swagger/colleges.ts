@@ -25,7 +25,7 @@ export async function createCollege(params: CollegeParams) {
   return response.data;
 }
 
-export async function updateCollege({ collegeId, params }: { collegeId: string; params: College }) {
+export async function updateCollege({ collegeId, params }: { collegeId: string; params: CollegeParams }) {
   const response = await spring_server_api_axiosInstance.put(`/admin/campuses/colleges/${collegeId}`, params);
   return response.data;
 }
