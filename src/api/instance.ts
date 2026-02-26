@@ -15,7 +15,9 @@ export const spring_server_api_axiosInstance = axios.create({
 });
 
 spring_server_api_axiosInstance.interceptors.request.use((config) => {
-  if (typeof document !== 'undefined') {
+  // TODO: /campuses/ 경로는 CORS 테스트를 위해 인증 헤더 제외 (백엔드 CORS 설정 후 제거)
+  const isPublicPath = config.url?.startsWith('/campuses/');
+  if (!isPublicPath && typeof document !== 'undefined') {
     const accessToken = getAccessToken();
     const refreshToken = getRefreshToken();
     if (accessToken) {
