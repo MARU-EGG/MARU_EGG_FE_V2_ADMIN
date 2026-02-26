@@ -20,8 +20,8 @@ export async function getDepartmentsByCollege(collegeId: number): Promise<Depart
   return response.data;
 }
 
-export async function createCollege() {
-  const response = await spring_server_api_axiosInstance.post('/admin/campuses/colleges');
+export async function createCollege(params: CollegeParams) {
+  const response = await spring_server_api_axiosInstance.post('/admin/campuses/colleges', params);
   return response.data;
 }
 
