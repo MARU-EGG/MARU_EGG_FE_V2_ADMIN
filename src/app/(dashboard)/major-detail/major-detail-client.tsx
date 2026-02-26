@@ -6,10 +6,10 @@ import { useCollegesQuery } from './hooks/use-colleges-query';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 
-const CAMPUS_TABS: Campus[] = ['자연캠퍼스', '인문캠퍼스'];
+const CAMPUS_TABS: Campus[] = ['인문캠퍼스', '자연캠퍼스'];
 
 function MajorDetailClient() {
-  const [selectedCampus, setSelectedCampus] = useState<Campus>('자연캠퍼스');
+  const [selectedCampus, setSelectedCampus] = useState<Campus>('인문캠퍼스');
   const [selectedCollegeId, setSelectedCollegeId] = useState<number | null>(null);
 
   const { data: colleges = [] } = useCollegesQuery();
