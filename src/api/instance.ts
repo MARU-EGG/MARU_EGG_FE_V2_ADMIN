@@ -17,13 +17,14 @@ export const spring_server_api_axiosInstance = axios.create({
 spring_server_api_axiosInstance.interceptors.request.use((config) => {
   if (typeof document !== 'undefined') {
     const accessToken = getAccessToken();
-    const refreshToken = getRefreshToken();
+    // const refreshToken = getRefreshToken();
     if (accessToken) {
       config.headers['authorization'] = accessToken;
     }
-    if (refreshToken) {
-      config.headers['authorization-refresh'] = refreshToken;
-    }
+    // TODO: 현재 refreshToken이 cors에러에 걸림, 백엔드에서 허용 필요 or refreshtoken을 통한 accesstoken 재발급 api 추가 필요
+    // if (refreshToken) {
+    //   config.headers['authorization-refresh'] = refreshToken;
+    // }
   }
   return config;
 });
