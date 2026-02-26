@@ -1,16 +1,10 @@
 'use client';
 
 import { useCreateCollegeMutation, useUpdateCollegeMutation } from '../hooks/use-college-mutations';
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { Campus, College } from '@/types/college';
 import { useState } from 'react';
 
 type CreateProps = {
@@ -54,10 +48,7 @@ function CollegeFormDialog({ mode, college, selectedCampus, children }: CollegeF
     if (mode === 'create') {
       create(params, { onSuccess: () => setOpen(false) });
     } else {
-      update(
-        { collegeId: String(college.collegeId), params },
-        { onSuccess: () => setOpen(false) },
-      );
+      update({ collegeId: String(college.collegeId), params }, { onSuccess: () => setOpen(false) });
     }
   };
 
@@ -73,20 +64,13 @@ function CollegeFormDialog({ mode, college, selectedCampus, children }: CollegeF
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700">캠퍼스</label>
-            <p className="rounded-md border border-input bg-gray-50 px-3 py-2 text-sm text-gray-600">
-              {campus}
-            </p>
+            <p className="rounded-md border border-input bg-gray-50 px-3 py-2 text-sm text-gray-600">{campus}</p>
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700">
               대학명 <span className="text-red-500">*</span>
             </label>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="예) 공과대학"
-              required
-            />
+            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="예) 공과대학" required />
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700">설명</label>

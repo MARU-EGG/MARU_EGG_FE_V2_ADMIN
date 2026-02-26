@@ -4,6 +4,7 @@ import CollegeList from './_components/college-list';
 import DepartmentPanel from './_components/department-panel';
 import { useCollegesQuery } from './hooks/use-colleges-query';
 import { cn } from '@/lib/utils';
+import { Campus } from '@/types/college';
 import { useState } from 'react';
 
 const CAMPUS_TABS: Campus[] = ['인문캠퍼스', '자연캠퍼스'];

@@ -1,9 +1,10 @@
 'use client';
 
+import { useDepartmentsQuery } from '../hooks/use-departments-query';
 import DepartmentFormDialog from './department-form-dialog';
 import DepartmentItem from './department-item';
-import { useDepartmentsQuery } from '../hooks/use-departments-query';
 import Button from '@/components/button/button';
+import { College } from '@/types/college';
 import { BookOpen, Plus } from 'lucide-react';
 
 type DepartmentPanelProps = {
@@ -32,13 +33,11 @@ function DepartmentPanel({ selectedCollege }: DepartmentPanelProps) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-gray-700">{selectedCollege.name}</span>
-          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500">
-            학과 목록
-          </span>
+          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500">학과 목록</span>
         </div>
         <span className="text-xs text-gray-400">{departments.length}개</span>
       </div>
-      <div className="flex flex-col divide-y rounded-xl border border-gray-200 overflow-hidden">
+      <div className="flex flex-col divide-y overflow-hidden rounded-xl border border-gray-200">
         {departments.map((dept) => (
           <DepartmentItem key={dept.departmentId} department={dept} />
         ))}

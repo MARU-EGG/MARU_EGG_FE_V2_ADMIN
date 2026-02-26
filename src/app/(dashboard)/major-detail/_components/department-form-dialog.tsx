@@ -1,16 +1,10 @@
 'use client';
 
 import { useCreateDepartmentMutation, useUpdateDepartmentMutation } from '../hooks/use-department-mutations';
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { Department } from '@/types/college';
 import { useState } from 'react';
 
 type CreateProps = {
@@ -51,10 +45,7 @@ function DepartmentFormDialog({ mode, department, collegeId, children }: Departm
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (mode === 'create') {
-      create(
-        { name, description, collegeId: resolvedCollegeId },
-        { onSuccess: () => setOpen(false) },
-      );
+      create({ name, description, collegeId: resolvedCollegeId }, { onSuccess: () => setOpen(false) });
     } else {
       update(
         {
@@ -81,12 +72,7 @@ function DepartmentFormDialog({ mode, department, collegeId, children }: Departm
             <label className="text-sm font-medium text-gray-700">
               학과명 <span className="text-red-500">*</span>
             </label>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="예) 컴퓨터공학과"
-              required
-            />
+            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="예) 컴퓨터공학과" required />
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700">설명</label>

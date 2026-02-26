@@ -1,4 +1,5 @@
 import { spring_server_api_axiosInstance } from '@/api/instance';
+import { Campus, College, CollegeParams, Department, DepartmentParams } from '@/types/college';
 
 export async function getColleges(): Promise<College[]> {
   const response = await spring_server_api_axiosInstance.get('/campuses/colleges');

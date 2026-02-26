@@ -1,8 +1,9 @@
 'use client';
 
-import DepartmentFormDialog from './department-form-dialog';
-import DeleteConfirmDialog from './delete-confirm-dialog';
 import { useDeleteDepartmentMutation } from '../hooks/use-department-mutations';
+import DeleteConfirmDialog from './delete-confirm-dialog';
+import DepartmentFormDialog from './department-form-dialog';
+import { Department } from '@/types/college';
 import { Pencil, Trash2 } from 'lucide-react';
 
 type DepartmentItemProps = {
@@ -27,9 +28,7 @@ function DepartmentItem({ department }: DepartmentItemProps) {
         <DeleteConfirmDialog
           name={`"${department.name}" 학과를 삭제하시겠어요?`}
           description="삭제된 학과는 복구할 수 없어요."
-          onConfirm={() =>
-            deleteDepartment({ departmentId: department.departmentId, collegeId: department.collegeId })
-          }
+          onConfirm={() => deleteDepartment({ departmentId: department.departmentId, collegeId: department.collegeId })}
         >
           <button
             type="button"

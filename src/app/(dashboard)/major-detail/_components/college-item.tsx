@@ -4,6 +4,7 @@ import { useDeleteCollegeMutation } from '../hooks/use-college-mutations';
 import CollegeFormDialog from './college-form-dialog';
 import DeleteConfirmDialog from './delete-confirm-dialog';
 import { cn } from '@/lib/utils';
+import { College } from '@/types/college';
 import { Pencil, Trash2 } from 'lucide-react';
 
 type CollegeItemProps = {

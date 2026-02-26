@@ -1,9 +1,10 @@
 'use client';
 
+import { useCollegesQuery } from '../hooks/use-colleges-query';
 import CollegeFormDialog from './college-form-dialog';
 import CollegeItem from './college-item';
-import { useCollegesQuery } from '../hooks/use-colleges-query';
 import Button from '@/components/button/button';
+import { Campus } from '@/types/college';
 import { Plus } from 'lucide-react';
 
 type CollegeListProps = {
@@ -22,7 +23,7 @@ function CollegeList({ selectedCampus, selectedCollegeId, onSelectCollege }: Col
         <span className="text-sm font-semibold text-gray-700">대학 목록</span>
         <span className="text-xs text-gray-400">{filteredColleges.length}개</span>
       </div>
-      <div className="flex flex-col divide-y rounded-xl border border-gray-200 overflow-hidden">
+      <div className="flex flex-col divide-y overflow-hidden rounded-xl border border-gray-200">
         {filteredColleges.map((college) => (
           <CollegeItem
             key={college.collegeId}

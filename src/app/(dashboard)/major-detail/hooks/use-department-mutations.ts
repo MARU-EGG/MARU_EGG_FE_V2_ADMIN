@@ -2,6 +2,7 @@
 
 import { createDepartment, deleteDepartment, updateDepartment } from '@/api/swagger/colleges';
 import { toast } from '@/components/toast';
+import { DepartmentParams } from '@/types/college';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export function useCreateDepartmentMutation() {
@@ -42,8 +43,7 @@ export function useUpdateDepartmentMutation() {
 export function useDeleteDepartmentMutation() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ departmentId }: { departmentId: number; collegeId: number }) =>
-      deleteDepartment(departmentId),
+    mutationFn: ({ departmentId }: { departmentId: number; collegeId: number }) => deleteDepartment(departmentId),
     onSuccess: (_, variables) => {
       toast.open({ type: 'success', position: 'top-center', message: '학과가 삭제되었어요' });
       queryClient.refetchQueries({ queryKey: ['departments', variables.collegeId] });
