@@ -1,18 +1,11 @@
-import { getQuestions } from '@/api/questions';
+import { QuestionListSkeleton } from '@/app/(dashboard)/question-list/_components/question-list-skeleton';
 import QuestionListClient from '@/app/(dashboard)/question-list/question-list-client';
-import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
+import { Suspense } from 'react';
 
-export default async function QuestionList() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ['questions', 'SUSI'],
-    queryFn: () => getQuestions({ type: 'SUSI' }),
-  });
-
+export default function QuestionList() {
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <Suspense fallback={<QuestionListSkeleton />}>
       <QuestionListClient />
-    </HydrationBoundary>
+    </Suspense>
   );
 }
