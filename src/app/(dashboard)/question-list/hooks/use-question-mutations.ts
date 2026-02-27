@@ -50,12 +50,25 @@ export function useDeleteQuestionMutation() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: deleteQuestion,
+    onMutate: async ({ id }) => {
+      await queryClient.cancelQueries({ queryKey: ['questions'] });
+      const previousQueries = queryClient.getQueriesData<QuestionItem[]>({ queryKey: ['questions'] });
+      queryClient.setQueriesData<QuestionItem[]>({ queryKey: ['questions'] }, (old) =>
+        old?.filter((q) => q.id !== id),
+      );
+      return { previousQueries };
+    },
     onSuccess: () => {
       toast.open({ type: 'success', position: 'top-center', message: '질문이 삭제되었어요' });
-      queryClient.refetchQueries({ queryKey: ['questions'] });
     },
-    onError: () => {
+    onError: (_err, _vars, context) => {
+      context?.previousQueries.forEach(([key, data]) =>
+        queryClient.setQueryData<QuestionItem[]>(key, data),
+      );
       toast.open({ type: 'error', position: 'top-center', message: '질문 삭제에 실패했어요' });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['questions'] });
     },
   });
 }
