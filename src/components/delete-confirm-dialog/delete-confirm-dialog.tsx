@@ -17,15 +17,26 @@ type DeleteConfirmDialogProps = {
   name: string;
   description: string;
   onConfirm: () => void;
-  children: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  children?: React.ReactNode;
 };
 
-function DeleteConfirmDialog({ name, description, onConfirm, children }: DeleteConfirmDialogProps) {
+function DeleteConfirmDialog({
+  name,
+  description,
+  onConfirm,
+  open,
+  onOpenChange,
+  children,
+}: DeleteConfirmDialogProps) {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild onClick={(e) => e.stopPropagation()}>
-        {children}
-      </AlertDialogTrigger>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      {children && (
+        <AlertDialogTrigger asChild onClick={(e) => e.stopPropagation()}>
+          {children}
+        </AlertDialogTrigger>
+      )}
       <AlertDialogContent
         className="max-w-sm overflow-hidden rounded-xl p-0"
         onClick={(e) => e.stopPropagation()}

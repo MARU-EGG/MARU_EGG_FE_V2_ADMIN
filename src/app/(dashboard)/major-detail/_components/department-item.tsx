@@ -1,7 +1,7 @@
 'use client';
 
 import { useDeleteDepartmentMutation } from '../hooks/use-department-mutations';
-import DeleteConfirmDialog from './delete-confirm-dialog';
+import DeleteConfirmDialog from '@/components/delete-confirm-dialog/delete-confirm-dialog';
 import DepartmentFormDialog from './department-form-dialog';
 import { Department } from '@/types/college';
 import { Pencil, Trash2 } from 'lucide-react';
