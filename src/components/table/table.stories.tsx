@@ -86,3 +86,33 @@ export const Default: Story = {
     </Table>
   ),
 };
+
+export const WithColumnWidths: Story = {
+  args: {
+    children: null,
+  },
+  render: () => (
+    <Table columnWidths={['60%', '20%', '20%']}>
+      <TableHead>
+        <TableRow>
+          <TableCell isHeader>질문 내용</TableCell>
+          <TableCell isHeader>질문 횟수</TableCell>
+          <TableCell isHeader>질문 확인 여부</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {tableData.map((item, index) => (
+          <TableRow key={index}>
+            <TableCell>{item.question}</TableCell>
+            <TableCell>{item.count}</TableCell>
+            <TableCell>
+              <button className={`h-7 w-14 rounded-md border border-error bg-error/10 text-sm text-error`}>
+                {item.status}
+              </button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
