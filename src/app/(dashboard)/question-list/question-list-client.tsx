@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 import type { AdmissionType } from '@/types/admission';
 import { ADMISSIONS } from '@/types/admission';
 import type { QuestionItem } from '@/types/questions';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useTransition } from 'react';
 
 const PAGE_SIZE = 10;
 
@@ -46,7 +46,9 @@ function QuestionListClient() {
   const [editQuestion, setEditQuestion] = useState<QuestionItem | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  const { data: questions = [], isLoading } = useQuestionsQuery(selectedType);
+  const [isPending, startTransition] = useTransition();
+
+  const { data: questions } = useQuestionsQuery(selectedType);
 
   const deleteQuestionMutation = useDeleteQuestionMutation();
 
@@ -69,8 +71,10 @@ function QuestionListClient() {
   );
 
   const handleTypeChange = (type: AdmissionType) => {
-    setSelectedType(type);
-    setCurrentPage(1);
+    startTransition(() => {
+      setSelectedType(type);
+      setCurrentPage(1);
+    });
   };
 
   const handleSortToggle = () => {
@@ -135,55 +139,55 @@ function QuestionListClient() {
         </div>
       </div>
 
-      {isLoading ? (
-        <div className="py-10 text-center text-sm text-gray-500">로딩 중...</div>
-      ) : filteredQuestions.length === 0 ? (
-        <div className="py-10 text-center text-sm text-gray-500">
-          {questions.length === 0 ? '질문이 없습니다.' : '조건에 맞는 질문이 없습니다.'}
-        </div>
-      ) : (
-        <>
-          <Table columnWidths={['75%', '10%', '10%', '5%']}>
-            <TableHead>
-              <TableRow>
-                <TableCell isHeader>질문 내용</TableCell>
-                <TableCell isHeader>
-                  <button onClick={handleSortToggle} className="flex cursor-pointer items-center gap-1">
-                    조회 횟수
-                    <span className="text-xs text-gray-400">{SORT_ICON[viewCountSort]}</span>
-                  </button>
-                </TableCell>
-                <TableCell isHeader>질문 확인 여부</TableCell>
-                <TableCell isHeader>{''}</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {paginatedQuestions.map((question) => (
-                <TableRow key={question.id}>
-                  <TableCell>{question.content}</TableCell>
-                  <TableCell>{question.viewCount}</TableCell>
-                  <TableCell>
-                    <Chip
-                      label={question.isChecked ? '확인' : '미확인'}
-                      status={question.isChecked ? 'success' : 'error'}
-                    />
+      <div className={cn('flex flex-col gap-6 transition-opacity', isPending && 'pointer-events-none opacity-50')}>
+        {filteredQuestions.length === 0 ? (
+          <div className="py-10 text-center text-sm text-gray-500">
+            {questions.length === 0 ? '질문이 없습니다.' : '조건에 맞는 질문이 없습니다.'}
+          </div>
+        ) : (
+          <>
+            <Table columnWidths={['75%', '10%', '10%', '5%']}>
+              <TableHead>
+                <TableRow>
+                  <TableCell isHeader>질문 내용</TableCell>
+                  <TableCell isHeader>
+                    <button onClick={handleSortToggle} className="flex cursor-pointer items-center gap-1">
+                      조회 횟수
+                      <span className="text-xs text-gray-400">{SORT_ICON[viewCountSort]}</span>
+                    </button>
                   </TableCell>
-                  <TableCell className="overflow-visible">
-                    <QuestionActionMenu
-                      onEdit={() => handleEdit(question)}
-                      onDelete={() => handleDelete(question.id)}
-                    />
-                  </TableCell>
+                  <TableCell isHeader>질문 확인 여부</TableCell>
+                  <TableCell isHeader>{''}</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {paginatedQuestions.map((question) => (
+                  <TableRow key={question.id}>
+                    <TableCell>{question.content}</TableCell>
+                    <TableCell>{question.viewCount}</TableCell>
+                    <TableCell>
+                      <Chip
+                        label={question.isChecked ? '확인' : '미확인'}
+                        status={question.isChecked ? 'success' : 'error'}
+                      />
+                    </TableCell>
+                    <TableCell className="overflow-visible">
+                      <QuestionActionMenu
+                        onEdit={() => handleEdit(question)}
+                        onDelete={() => handleDelete(question.id)}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
 
-          {totalPages > 1 && (
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
-          )}
-        </>
-      )}
+            {totalPages > 1 && (
+              <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+            )}
+          </>
+        )}
+      </div>
 
       <QuestionEditDialog question={editQuestion} open={isEditOpen} onOpenChange={setIsEditOpen} />
     </div>
