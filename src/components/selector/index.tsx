@@ -33,7 +33,7 @@ function Selector({ value, children, selectorSize = 'small' }: SelectorProps) {
 
   return (
     <SelectorContext.Provider value={{ isOpen, setIsOpen, triggerLabel, setTriggerLabel, size }}>
-      <div ref={ref} className="flex flex-col">
+      <div ref={ref} className="relative z-20 flex flex-col">
         {children}
       </div>
     </SelectorContext.Provider>

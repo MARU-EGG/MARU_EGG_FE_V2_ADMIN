@@ -56,9 +56,9 @@ export const SmallCategory: Story = {
     <Selector>
       <Selector.Trigger placeholder="카테고리선택" />
       <Selector.Menus>
-        <Selector.Menu value="ADMISSION_GUIDE" label="모집요강" onClick={action('모집요강')} />
+        <Selector.Menu value="ADMISSION_GUIDELINE" label="모집요강" onClick={action('모집요강')} />
         <Selector.Menu value="PASSING_RESULT" label="입시결과" onClick={action('입시결과')} />
-        <Selector.Menu value="PAST_QUESTION" label="기출문제" onClick={action('기출문제')} />
+        <Selector.Menu value="PAST_QUESTIONS" label="기출문제" onClick={action('기출문제')} />
         <Selector.Menu value="INTERVIEW_INFO" label="면접유의사항" onClick={action('면접유의사항')} />
       </Selector.Menus>
     </Selector>
@@ -74,9 +74,9 @@ export const LargeCategory: Story = {
     <Selector>
       <Selector.Trigger placeholder="카테고리선택" />
       <Selector.Menus>
-        <Selector.Menu value="ADMISSION_GUIDE" label="모집요강" onClick={action('모집요강')} />
+        <Selector.Menu value="ADMISSION_GUIDELINE" label="모집요강" onClick={action('모집요강')} />
         <Selector.Menu value="PASSING_RESULT" label="입시결과" onClick={action('입시결과')} />
-        <Selector.Menu value="PAST_QUESTION" label="기출문제" onClick={action('기출문제')} />
+        <Selector.Menu value="PAST_QUESTIONS" label="기출문제" onClick={action('기출문제')} />
         <Selector.Menu value="INTERVIEW_INFO" label="면접유의사항" onClick={action('면접유의사항')} />
       </Selector.Menus>
     </Selector>
