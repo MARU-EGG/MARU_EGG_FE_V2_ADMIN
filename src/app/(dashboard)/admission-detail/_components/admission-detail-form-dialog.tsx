@@ -35,8 +35,8 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
   const { mutate: update, isPending: isUpdating } = useUpdateAdmissionDetailMutation(type);
   const isPending = isCreating || isUpdating;
 
-  const hasParentheses = /\(.+\)/.test(name);
-  const showFormatWarning = name.trim().length > 0 && !hasParentheses;
+  const isFormatValid = /\(.+\)/.test(name);
+  const showFormatError = name.trim().length > 0 && !isFormatValid;
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (!nextOpen) {
@@ -74,22 +74,22 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
               placeholder="예) 학생부종합(계열 모집)"
               required
             />
-            {showFormatWarning ? (
-              <p className="flex items-center gap-1 text-xs text-amber-500">
+            {showFormatError ? (
+              <p className="flex items-center gap-1 text-xs text-red-500">
                 <TriangleAlert size={12} />
-                권장 형식: <span className="font-medium">대전형(소전형)</span>
-                &nbsp;예) 학생부종합(계열 모집)
+                형식이 올바르지 않아요.{' '}
+                <span className="font-medium">대전형(소전형)</span> 형식을 사용해주세요.
               </p>
             ) : (
               <p className="text-xs text-gray-400">
-                권장 형식:{' '}
+                입력 형식:{' '}
                 <span className="font-medium text-gray-500">대전형(소전형)</span>
                 &nbsp;·&nbsp; 예) 학생부종합(계열 모집)
               </p>
             )}
           </div>
           <DialogFooter className="mt-2">
-            <Button type="submit" disabled={!name.trim() || isPending} className="w-full">
+            <Button type="submit" disabled={!name.trim() || !isFormatValid || isPending} className="w-full">
               {isPending ? '처리 중...' : mode === 'create' ? '추가하기' : '수정하기'}
             </Button>
           </DialogFooter>
