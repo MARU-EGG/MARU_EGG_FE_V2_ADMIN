@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { AdmissionType } from '@/types/admission';
+import { TriangleAlert } from 'lucide-react';
 import { useState } from 'react';
 
 type CreateProps = {
@@ -33,6 +34,9 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
   const { mutate: create, isPending: isCreating } = useCreateAdmissionDetailMutation();
   const { mutate: update, isPending: isUpdating } = useUpdateAdmissionDetailMutation(type);
   const isPending = isCreating || isUpdating;
+
+  const hasParentheses = /\(.+\)/.test(name);
+  const showFormatWarning = name.trim().length > 0 && !hasParentheses;
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (!nextOpen) {
@@ -64,7 +68,24 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
             <label className="text-sm font-medium text-gray-700">
               상세 타입 이름 <span className="text-red-500">*</span>
             </label>
-            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="예) 일반전형" required />
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="예) 학생부종합(계열 모집)"
+              required
+            />
+            {showFormatWarning ? (
+              <p className="flex items-center gap-1 text-xs text-amber-500">
+                <TriangleAlert size={12} />
+                권장 형식: <span className="font-medium">대전형(소전형)</span>
+                &nbsp;예) 학생부종합(계열 모집)
+              </p>
+            ) : (
+              <p className="text-xs text-gray-400">
+                권장 형식: <span className="font-medium text-gray-500">대전형(소전형)</span>
+                &nbsp;·&nbsp; 예) 학생부종합(계열 모집)
+              </p>
+            )}
           </div>
           <DialogFooter className="mt-2">
             <Button
