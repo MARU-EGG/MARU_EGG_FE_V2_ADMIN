@@ -87,7 +87,11 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
             )}
           </div>
           <DialogFooter className="mt-2">
-            <Button type="submit" disabled={!name.trim() || !isFormatValid || isPending} className="w-full">
+            <Button
+              type="submit"
+              disabled={!name.trim() || !isFormatValid || isPending}
+              className="w-full bg-primary-maru hover:bg-opacity-70"
+            >
               {isPending ? '처리 중...' : mode === 'create' ? '추가하기' : '수정하기'}
             </Button>
           </DialogFooter>
