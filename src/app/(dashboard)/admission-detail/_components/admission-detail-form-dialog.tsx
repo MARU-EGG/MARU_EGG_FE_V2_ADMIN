@@ -64,15 +64,14 @@ function AdmissionDetailFormDialog({ mode, type, detail, children }: AdmissionDe
             <label className="text-sm font-medium text-gray-700">
               상세 타입 이름 <span className="text-red-500">*</span>
             </label>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="예) 일반전형"
-              required
-            />
+            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="예) 일반전형" required />
           </div>
           <DialogFooter className="mt-2">
-            <Button type="submit" disabled={!name.trim() || isPending} className="w-full">
+            <Button
+              type="submit"
+              disabled={!name.trim() || isPending}
+              className="w-full bg-primary-maru hover:bg-opacity-70"
+            >
               {isPending ? '처리 중...' : mode === 'create' ? '추가하기' : '수정하기'}
             </Button>
           </DialogFooter>
